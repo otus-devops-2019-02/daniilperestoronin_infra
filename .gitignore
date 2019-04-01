@@ -1,2 +1,9 @@
-#Idea files
+# Idea files
 .idea/
+
+# terraform
+*.tfstate
+*.tfstate.*.backup
+*.tfstate.backup
+*.tfvars
+.terraform/
