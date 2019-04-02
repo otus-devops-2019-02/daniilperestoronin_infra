@@ -9,15 +9,17 @@ provider "google" {
 
   # ID проекта
   project = "${var.project}"
-  region = "${var.region}"
+  region  = "${var.region}"
 }
 
 resource "google_compute_instance" "app" {
-  name = "reddit-app"
+  name         = "reddit-app"
   machine_type = "g1-small"
-  zone = "${var.zone}"
+  zone         = "${var.zone}"
+
   tags = [
-    "reddit-app"]
+    "reddit-app",
+  ]
 
   # определение загрузочного диска
   boot_disk {
@@ -41,8 +43,8 @@ resource "google_compute_instance" "app" {
   }
 
   connection {
-    type = "ssh"
-    user = "appuser"
+    type  = "ssh"
+    user  = "appuser"
     agent = false
 
     # путь до приватного ключа
@@ -50,7 +52,7 @@ resource "google_compute_instance" "app" {
   }
 
   provisioner "file" {
-    source = "files/puma.service"
+    source      = "files/puma.service"
     destination = "/tmp/puma.service"
   }
 
@@ -68,15 +70,19 @@ resource "google_compute_firewall" "firewall_puma" {
   # Какой доступ разрешить
   allow {
     protocol = "tcp"
+
     ports = [
-      "9292"]
+      "9292",
+    ]
   }
 
   # Каким адресам разрешаем доступ
   source_ranges = [
-    "0.0.0.0/0"]
+    "0.0.0.0/0",
+  ]
 
   # Правило применимо для инстансов с перечисленными тэгами
   target_tags = [
-    "reddit-app"]
+    "reddit-app",
+  ]
 }
