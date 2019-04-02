@@ -13,7 +13,8 @@ provider "google" {
 }
 
 resource "google_compute_instance" "app" {
-  name         = "reddit-app"
+  count        = "${var.node_count}"
+  name         = "reddit-app${count.index}"
   machine_type = "g1-small"
   zone         = "${var.zone}"
 
@@ -85,4 +86,10 @@ resource "google_compute_firewall" "firewall_puma" {
   target_tags = [
     "reddit-app",
   ]
+}
+
+resource "google_compute_project_metadata" "ssh_keys" {
+  metadata {
+    ssh-keys = "appuser5:${file(var.public_key_path)}\nappuser6:${file(var.public_key_path)}"
+  }
 }
