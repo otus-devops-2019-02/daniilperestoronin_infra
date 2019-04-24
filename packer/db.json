@@ -7,7 +7,7 @@
       "image_family": "reddit-db",
       "source_image_family": "{{ user `source_image_family`}}",
       "zone": "europe-west1-b",
-      "ssh_username": "appuser",
+      "ssh_username": "{{user `ssh_username`}}",
       "machine_type": "{{user `machine_type`}}",
       "image_description": "DB image for reddit app",
       "disk_size": "10",
