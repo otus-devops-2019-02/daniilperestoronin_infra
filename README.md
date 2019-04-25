@@ -2,6 +2,13 @@
 
 daniilperestoronin Infra repository
 
+## Homework №9 (Terraform-2)
+
+- Созданы модули app, db, vpc
+- Проверена работа vpc
+- Созданы окружения stage и prod
+- Создан storage-bucket.tf, проверено с помошью вэб-консоли что бакеты создались и доступны
+
 ## Homework №8 (Terraform-1)
 
 ### В процессе сделано:
