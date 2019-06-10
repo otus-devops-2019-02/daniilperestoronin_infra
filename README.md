@@ -2,14 +2,21 @@
 
 daniilperestoronin Infra repository
 
-## Homework №9 (Terraform-2)
+## Homework №7 (Ansible-1)
+
+Вопрос: выполните ```ansible app -m command -a 'rm -rf ~/reddit' ``` и проверьте еще раз выполнение плейбука. Что изменилось и почему? 
+
+Ответ: Командой выше удаляется репозиторий, при повторном выполнении плейбука репозиторий клонируется,
+поэтому возвращается ```changed=1```
+
+## Homework №6 (Terraform-2)
 
 - Созданы модули app, db, vpc
 - Проверена работа vpc
 - Созданы окружения stage и prod
 - Создан storage-bucket.tf, проверено с помошью вэб-консоли что бакеты создались и доступны
 
-## Homework №8 (Terraform-1)
+## Homework №5 (Terraform-1)
 
 ### В процессе сделано:
 
@@ -18,7 +25,7 @@ daniilperestoronin Infra repository
 - Настроена передача ключей в метаданные проекта
 - Настроен http-балансировщик
 
-## Homework №7 (Packer)
+## Homework №4 (Packer)
 
 ### В процессе сделано:
  - Создан шаблон для создания image с установленными Ruby, Bundler и Mongodb (ubuntu16.json)
@@ -30,7 +37,7 @@ daniilperestoronin Infra repository
 ### Проверить работоспособность:
  - По ссылке http://35.228.233.244:9292/
 
-## Homework №6 (Cloud test app)
+## Homework №3 (Cloud test app)
 
 ```bash
 testapp_IP = 35.228.182.233
@@ -51,7 +58,7 @@ gcloud compute instances create reddit-app --boot-disk-size=10GB \
 gcloud compute firewall-rules create default-puma-server --allow=tcp:9292 --target-tags puma-server
 ```
 
-## Homework №5 (VPN)
+## Homework №2 (VPN)
 
 ```bash
 bastion_IP = 35.228.179.12
